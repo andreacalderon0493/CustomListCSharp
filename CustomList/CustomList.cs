@@ -12,27 +12,89 @@ namespace CustomList
         private T[] items;
         private int capacity;
         private int count;
+        //other way of using => is
+        //public object MyProperty { get; set; }
+        //property and then tab twice 
+        public int Count => count;
+        public int Capacity => count;
+        public T this[int index]
+        {
+            get => items[index];
+            set => items[index] = value;
+        }
+
 
         //Constructor
         public CustomList()
         {
-            //capacity = 
-            //count =
-            //items = 
+            capacity = 4;
+            count = 0;
+            items = new T[capacity];
+
         }
+       
+
+
 
         //Member Methods (CAN DO)
         public void Add(T item)
         {
+            
+
             //'item' parameter should be added to internal 'items' array
-            //if items array is at capacity, double capacity and create new array
+            if ( count == capacity)
+            {
+                
+                capacity *= 2;
+               
+                T[] temporaryArray = new T[capacity];
+
+                for (int i = 0; i < count; i++)
+                {
+                    temporaryArray[i] = items[i];
+                }
+
+                items = temporaryArray;
+
+            }
+
+            items[Count] = item;
+
+            count++;
+
+
             //transfer all items to new array
         }
 
         public bool Remove(T item)
         {
+
+            for (int i = 0; i < count; i++)
+            {
+                if (Equals(item, items[i])) 
+                {
+                    items[i] = default (T);
+                    
+                    for (int j = i; j < count; j++)
+                    {
+                        if (j == count - 1)
+                        {
+                            items[j] = default(T);
+                        }
+                        else
+                        {
+                            items[j] = items[j + 1];
+                        }
+                    }
+                    count--;
+                    return true;
+                } 
+               
+            }
             //If 'item' exists in the 'items' array, remove its first instance
+
             //Any items coming after the removed item should be shifted down so there is no empty index.
+
             //If 'item' was removed, return true. If no item was removed, return false.
             return false;
         }
