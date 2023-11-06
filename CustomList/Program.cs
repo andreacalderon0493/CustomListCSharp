@@ -11,8 +11,20 @@
             Console.WriteLine($"{myList[1]}");
             myList.Add("I'm");
             myList.Add("Andrea");
-            Console.WriteLine($"{myList[2]},{myList[3]}");
             myList.Add("Calderon");
+            myList.Add("I love cats!");
+            myList.Remove("Calderon");
+            myList.ToString();
+
+            Console.WriteLine($"{myList}");
+
+
+            CustomList<int> secondList = new CustomList<int>();
+            
+
+            secondList.ToString();
+            Console.WriteLine($"{secondList}");
+
         }
     }
 }

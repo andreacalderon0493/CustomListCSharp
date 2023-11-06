@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace CustomList
             get => items[index];
             set => items[index] = value;
         }
-
+        
 
         //Constructor
         public CustomList()
@@ -32,9 +33,9 @@ namespace CustomList
             items = new T[capacity];
 
         }
+
+
        
-
-
 
         //Member Methods (CAN DO)
         public void Add(T item)
@@ -101,8 +102,23 @@ namespace CustomList
 
         public override string ToString()
         {
+            bool first = true;
+            string list = "";
+            for (int i = 0; i < count; i++)
+            {
+                if (!first)
+                {
+                    list += ", ";
+                }
+                else
+                {
+                    first = false;
+                }
+                list += $"{items[i]}";
+            }
+                
             //returns a single string that contains all items from array
-            return "";
+            return list;
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
@@ -117,6 +133,6 @@ namespace CustomList
             return null;
         }
 
-
+      
     }
 }
