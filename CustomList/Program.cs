@@ -4,26 +4,20 @@
     {
         static void Main(string[] args)
         {
-            CustomList<string> myList = new CustomList<string>();
-            myList.Add("HELLO");
-            Console.WriteLine($"{myList[0]}");
-            myList.Add("World");
-            Console.WriteLine($"{myList[1]}");
-            myList.Add("I'm");
-            myList.Add("Andrea");
-            myList.Add("Calderon");
-            myList.Add("I love cats!");
-            myList.Remove("Calderon");
-            myList.ToString();
+            CustomList<string> pies = new CustomList<string>();
+            CustomList<string> iceCream = new CustomList<string>();
 
-            Console.WriteLine($"{myList}");
-
-
-            CustomList<int> secondList = new CustomList<int>();
             
+            pies.Add("Blueberry pie");
+            pies.Add("Apple pie");
+            pies.Add("Pumpkin pie");
 
-            secondList.ToString();
-            Console.WriteLine($"{secondList}");
+            iceCream.Add("vanilla");
+            iceCream.Add("cherry");
+
+            pies.GetEnumerator();
+
+            
 
         }
     }

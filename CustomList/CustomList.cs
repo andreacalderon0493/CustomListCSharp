@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable 
     {
         //Member Variables (HAS A)
         private T[] items;
@@ -35,9 +35,20 @@ namespace CustomList
         }
 
 
-       
+
 
         //Member Methods (CAN DO)
+        //Single Principle - creates code that does one thing which for loops the objects 
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
+        //Open-Close Principle
+        //Allows the user to continuously add new arrays if capacity maxamixes and doubles it and creates a new array with old items
+        //Allows for open for extension but closed for modification. 
         public void Add(T item)
         {
             
@@ -66,7 +77,9 @@ namespace CustomList
 
             //transfer all items to new array
         }
-
+        //Open-Close Principle
+        //Allows user to remove item from list and shift everything backwards. 
+        //Allows for open for extension but closed for modification. 
         public bool Remove(T item)
         {
 
@@ -99,7 +112,7 @@ namespace CustomList
             //If 'item' was removed, return true. If no item was removed, return false.
             return false;
         }
-
+        //Single Responsibility - this ToString method does one thing only, allows to string what is in the custom list, int, string etc. 
         public override string ToString()
         {
             bool first = true;
@@ -121,10 +134,26 @@ namespace CustomList
             return list;
         }
 
+        
+
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
+            CustomList<T> totalList = new CustomList<T>();
+
+            for (int i = 0; i < firstList.count; i++)
+            {
+                totalList.Add(secondList.items[i]);
+            }
+            for (int i = 0; i < secondList.count; i++)
+            {
+                totalList.Add(firstList.items[i]);
+                     
+            }
+            totalList = firstList + secondList;
+           
+
             //returns a single CustomList<T> that contains all items from firstList and all items from secondList 
-            return null;
+            return totalList;
         }
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)

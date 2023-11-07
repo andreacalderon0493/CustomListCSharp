@@ -33,6 +33,7 @@ public class AddMethodTests
         Assert.AreEqual("Hello", myList[0]);
 
     }
+    //Added two asserts to the method below
 
     [TestMethod]
     public void AddMethod_WhenCountReachesCapacity_DoublingCapacityWhenFull()
@@ -56,18 +57,6 @@ public class AddMethodTests
         Assert.AreEqual(8, myList.Capacity);
     }
 
-    [TestMethod]
-    public void AddMethod_TransferItemsToNewArray_OneOriginalItemPersistsIntheSameIndex()
-    {
-        //Arrange
-        CustomList<string> myList = new CustomList<string>();
-
-        //Act
-
-
-        //Assert 
-
-    }
 
     [TestMethod]
     public void AddMethod_WhenCountReachesCapacity_IndexOneSayingHello()
@@ -85,6 +74,8 @@ public class AddMethodTests
         myList.Add("I");
         myList.Add("love");
         myList.Add("cats");
+
+        //assert
 
         Assert.AreEqual("Hello", myList[0]);
 
